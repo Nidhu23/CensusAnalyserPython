@@ -1,2 +1,5 @@
 /.idea/*
 CensusAnalyserPython.iml
+com/__init__.py
+com.censusanalyser.testing/__init__.py
+com/__pycache__/*
