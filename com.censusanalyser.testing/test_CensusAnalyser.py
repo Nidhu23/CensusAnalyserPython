@@ -1,4 +1,4 @@
-from com.censusanalyser.CensusAnalyser import CsvLoader
+from com.censusanalyser.CsvLoader import CsvLoader
 import pytest
 from com.censusanalyser.CensusAnalyserError import CensusAnalyserError
 
