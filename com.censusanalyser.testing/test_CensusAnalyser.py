@@ -1,6 +1,7 @@
 from com.censusanalyser.CensusAnalyser import CensusAnalyser
 import pytest
 from com.censusanalyser.CensusAnalyserError import CensusAnalyserError
+import json
 
 CENSUS_CSV_FILE_PATH = r"resources\IndiaStateCensusData.csv"
 CENSUS_CSV_FILE_WRONG_PATH = r"com.censusanalyser.testing\resources\IndiaStateCensusData.csv"
@@ -68,3 +69,11 @@ def test_givenStateCodeCSVFile_WhenHeadersWrong_ShouldRaiseException():
     census_analyser = CensusAnalyser(CENSUS_CSV_FILE_PATH)
     with pytest.raises(CensusAnalyserError):
         assert census_analyser.state_code_record_counter()
+
+
+def test_givenCensusCSVFile_WhenSortedByState_ShouldReturnSortedResult():
+    census_analyser = CensusAnalyser(CENSUS_CSV_FILE_PATH)
+    census_analyser.census_record_counter()
+    sorted_json = census_analyser.sort_by_state()
+    json_dict = json.loads(sorted_json)
+    assert json_dict[0]["State"] == "Andhra Pradesh"
