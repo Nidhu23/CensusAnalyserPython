@@ -19,6 +19,10 @@ class CensusAnalyser:
         CensusAnalyser.__data_list.sort_values(by=[IndiaCensusCSV().state], inplace=True)
         return CensusAnalyser.__data_list.to_json(orient='records')
 
+    def sort_by_stateCode(self):
+        CensusAnalyser.__data_list.sort_values(by=StateCodeCSV().state_code, inplace=True)
+        return CensusAnalyser.__data_list.to_json(orient='records')
+
     def sort_by_population(self):
         CensusAnalyser.__data_list.sort_values(by=[IndiaCensusCSV().population], inplace=True, ascending=False)
         return CensusAnalyser.__data_list.to_json(orient='records')
