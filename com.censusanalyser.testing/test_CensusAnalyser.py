@@ -77,3 +77,11 @@ def test_givenCensusCSVFile_WhenSortedByState_ShouldReturnSortedResult():
     sorted_json = census_analyser.sort_by_state()
     json_dict = json.loads(sorted_json)
     assert json_dict[0]["State"] == "Andhra Pradesh"
+
+
+def test_givenCensusCSVFile_WhenSortedByPopulation_ShouldReturnSortedResult():
+    census_analyser = CensusAnalyser(CENSUS_CSV_FILE_PATH)
+    census_analyser.census_record_counter()
+    sorted_json = census_analyser.sort_by_population()
+    json_dict = json.loads(sorted_json)
+    assert json_dict[0]["Population"] == 199812341
