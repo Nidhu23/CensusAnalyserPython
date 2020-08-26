@@ -1,4 +1,3 @@
-import pandas as pd
 from com.censusanalyser.CsvLoader import *
 
 
@@ -15,3 +14,9 @@ class CensusAnalyser:
     def state_code_record_counter(self):
         CensusAnalyser.__data_list = CsvLoader.load_state_data(self.path)
         return len(CensusAnalyser.__data_list)
+
+    @classmethod
+    def sort_by_state(cls):
+        CensusAnalyser.__data_list.sort_values(by=[IndiaCensusCSV().state], inplace=True)
+        return CensusAnalyser.__data_list.to_json(orient='records')
+
