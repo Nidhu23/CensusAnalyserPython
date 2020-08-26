@@ -4,24 +4,23 @@ from com.censusanalyser.IndiaCensusCSV import IndiaCensusCSV, StateCodeCSV
 
 
 class CsvLoader:
-    def __init__(self, path):
-        self.path = path
-
-    def load_census_data(self):
+    @staticmethod
+    def load_census_data(path):
         try:
             census_col_list = repr(IndiaCensusCSV()).split(",")
-            census_list = pd.read_csv(self.path, usecols=census_col_list)
-            return len(census_list)
+            census_list = pd.read_csv(path, usecols=census_col_list)
+            return census_list
         except FileNotFoundError:
             raise CensusAnalyserError("Check file path")
         except ValueError:
             raise CensusAnalyserError("Wrong delimiter Or Headers do not match")
 
-    def load_state_data(self):
+    @staticmethod
+    def load_state_data(path):
         try:
             state_col_list = repr(StateCodeCSV()).split(",")
-            state_list = pd.read_csv(self.path, usecols=state_col_list)
-            return len(state_list)
+            state_list = pd.read_csv(path, usecols=state_col_list)
+            return state_list
         except FileNotFoundError:
             raise CensusAnalyserError("Check file path")
         except ValueError:
