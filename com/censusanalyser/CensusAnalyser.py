@@ -1,5 +1,6 @@
 import pandas as pd
 from com.censusanalyser.CensusAnalyserError import CensusAnalyserError
+from com.censusanalyser.IndiaCensusCSV import IndiaCensusCSV
 
 
 class CsvLoader:
@@ -8,7 +9,10 @@ class CsvLoader:
 
     def record_counter(self):
         try:
-            census_list = pd.read_csv(self.path).values.tolist()
+            census_col_list = repr(IndiaCensusCSV()).split(",")
+            census_list = pd.read_csv(self.path, usecols=census_col_list)
             return len(census_list)
         except FileNotFoundError:
             raise CensusAnalyserError("Check file path")
+        except ValueError:
+            raise CensusAnalyserError("Wrong delimiter Or Headers do not match")

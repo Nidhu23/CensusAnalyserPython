@@ -27,4 +27,5 @@ def test_record_counter_exception_given_wrong_file_type():
 
 def test_record_counter_exception_given_file_with_wrong_delimiter():
     csv_loader = CsvLoader(CENSUS_CSV_FILE_WRONG_DELIMITER)
-    assert csv_loader.record_counter() == 5
+    with pytest.raises(CensusAnalyserError):
+        assert csv_loader.record_counter()
