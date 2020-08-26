@@ -26,3 +26,7 @@ class CensusAnalyser:
     def sort_by_population(self):
         CensusAnalyser.__data_list.sort_values(by=[IndiaCensusCSV().population], inplace=True, ascending=False)
         return CensusAnalyser.__data_list.to_json(orient='records')
+
+    def sort_by_density(self):
+        CensusAnalyser.__data_list.sort_values(by=[IndiaCensusCSV().density], inplace=True, ascending=False)
+        return CensusAnalyser.__data_list.to_json(orient="records")
