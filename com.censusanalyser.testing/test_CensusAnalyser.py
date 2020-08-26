@@ -93,3 +93,11 @@ def test_givenCensusCSVFile_WhenSortedByPopulation_ShouldReturnSortedResult():
     sorted_json = census_analyser.sort_by_population()
     json_dict = json.loads(sorted_json)
     assert json_dict[0]["Population"] == 199812341
+
+
+def test_givenCensusCSVFile_WhenSortedByDensity_ShouldReturnSortedResult():
+    census_analyser = CensusAnalyser(CENSUS_CSV_FILE_PATH)
+    census_analyser.census_record_counter()
+    sorted_json = census_analyser.sort_by_density()
+    json_dict = json.loads(sorted_json)
+    assert json_dict[0]["DensityPerSqKm"] == 1102
