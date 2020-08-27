@@ -40,3 +40,7 @@ class CensusAnalyser:
     def sort_by_population_us(self):
         self.__data_list.sort_values(by=[USCensusCSV().population], inplace=True, ascending=False)
         return self.__data_list.to_json(orient="records")
+
+    def sort_by_density_us(self):
+        self.__data_list.sort_values(by=[USCensusCSV().density], inplace=True, ascending=False)
+        return self.__data_list.to_json(orient="records")
