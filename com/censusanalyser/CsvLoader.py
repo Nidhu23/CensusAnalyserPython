@@ -1,18 +1,15 @@
 import pandas as pd
+
 from com.censusanalyser.CensusAnalyserError import CensusAnalyserError
-from com.censusanalyser.CensusCSV import *
+from com.censusanalyser.CsvEnum import *
 
 
 class CsvLoader:
     @staticmethod
     def load_census_data(path, census_object):
         try:
-            if isinstance(census_object, IndiaCensusCSV):
-                census_col_list = repr(IndiaCensusCSV()).split(",")
-                census_list = pd.read_csv(path, sep=",", usecols=census_col_list)
-                return census_list
-            elif isinstance(census_object, USCensusCSV):
-                census_col_list = repr(USCensusCSV()).split(",")
+            if isinstance(census_object, CsvDTOType):
+                census_col_list = repr(census_object.value).split(",")
                 census_list = pd.read_csv(path, sep=",", usecols=census_col_list)
                 return census_list
         except FileNotFoundError:
