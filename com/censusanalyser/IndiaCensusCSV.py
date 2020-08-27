@@ -11,7 +11,7 @@ class IndiaCensusCSV:
 
 class StateCodeCSV:
     def __init__(self):
-        self.state = "State Name"
+        self.state = "State"
         self.state_code = "StateCode"
 
     def __repr__(self):
