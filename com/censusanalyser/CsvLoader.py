@@ -1,6 +1,6 @@
 import pandas as pd
 from com.censusanalyser.CensusAnalyserError import CensusAnalyserError
-from com.censusanalyser.IndiaCensusCSV import IndiaCensusCSV, StateCodeCSV
+from com.censusanalyser.CensusCSV import IndiaCensusCSV, StateCodeCSV
 
 
 class CsvLoader:
