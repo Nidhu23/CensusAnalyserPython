@@ -5,14 +5,16 @@ class CensusAnalyser:
     def __init__(self):
         self.__data_list = pd.DataFrame()
 
-    def census_record_counter(self, path):
-        self.__data_list = CsvLoader.load_census_data(path)
-        print(type(self.__data_list))
+    def india_census_record_counter(self, path):
+        self.__data_list = CsvLoader.load_census_data(path, IndiaCensusCSV())
         return len(self.__data_list)
 
     def state_code_record_counter(self, path_one, path_two):
-        self.__data_list = CsvLoader.load_state_data(path_one, path_two)
-        print(type(self.__data_list))
+        self.__data_list = CsvLoader.load_state_data(path_one, path_two, IndiaCensusCSV())
+        return len(self.__data_list)
+
+    def us_census_record_counter(self, path):
+        self.__data_list = CsvLoader.load_census_data(path, USCensusCSV())
         return len(self.__data_list)
 
     def sort_by_state(self):
@@ -34,6 +36,3 @@ class CensusAnalyser:
     def sort_by_area(self):
         self.__data_list.sort_values(by=[IndiaCensusCSV().area], inplace=True, ascending=False)
         return self.__data_list.to_json(orient="records")
-
-
-
