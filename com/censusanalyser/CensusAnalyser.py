@@ -7,16 +7,12 @@ class CensusAnalyser:
         self.__data_list = pd.DataFrame()
         self.dto = dto_object
 
-    def india_census_record_counter(self, path):
+    def record_counter(self, path):
         self.__data_list = CsvLoader.load_census_data(path, self.dto)
         return len(self.__data_list)
 
     def state_code_record_counter(self, path_one, path_two):
         self.__data_list = CsvLoader.load_state_data(path_one, path_two, CsvDTOType.india_census)
-        return len(self.__data_list)
-
-    def us_census_record_counter(self, path):
-        self.__data_list = CsvLoader.load_census_data(path, self.dto)
         return len(self.__data_list)
 
     def sort_by_state(self):
