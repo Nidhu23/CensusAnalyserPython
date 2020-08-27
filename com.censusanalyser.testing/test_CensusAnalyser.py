@@ -120,3 +120,15 @@ def test_givenUSCensusCSVFile_WhenSortedByArea_ShouldReturnSortedResult():
     assert json_dict[0]["Total area"] == 1723338.01
 
 
+def test_givenCensusCSVFile_WhenSorted_ShouldReturnStateWithMaxDensity():
+    census_analyser = CensusAnalyser(CsvDTOType.india_census)
+    census_analyser.record_counter(CENSUS_CSV_FILE_PATH)
+    state = census_analyser.max_density_finder()
+    assert state == "Bihar"
+
+
+def test_givenUSCensusCSVFile_WhenSorted_ShouldReturnStateWithMaxDensity():
+    census_analyser = CensusAnalyser(CsvDTOType.us_census)
+    census_analyser.record_counter(US_CENSUS_CSV_FILE_PATH)
+    state = census_analyser.max_density_finder()
+    assert state == "District of Columbia"
