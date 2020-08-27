@@ -37,4 +37,7 @@ class CensusAnalyser:
         self.__data_list.sort_values(by=[self.dto.value.area], inplace=True, ascending=False)
         return self.__data_list.to_json(orient="records")
 
-
+    def max_density_finder(self):
+        state_names = self.sort_by_density()
+        states_dict = json.loads(state_names)
+        return states_dict[0][self.dto.value.state]
