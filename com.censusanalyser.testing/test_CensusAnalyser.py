@@ -118,3 +118,5 @@ def test_givenUSCensusCSVFile_WhenSortedByArea_ShouldReturnSortedResult():
     sorted_json = census_analyser.sort_by_area()
     json_dict = json.loads(sorted_json)
     assert json_dict[0]["Total area"] == 1723338.01
+
+

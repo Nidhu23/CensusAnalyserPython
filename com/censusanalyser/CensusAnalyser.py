@@ -1,3 +1,5 @@
+import json
+
 from com.censusanalyser.CsvLoader import *
 from com.censusanalyser.CsvEnum import *
 
@@ -34,3 +36,5 @@ class CensusAnalyser:
     def sort_by_area(self):
         self.__data_list.sort_values(by=[self.dto.value.area], inplace=True, ascending=False)
         return self.__data_list.to_json(orient="records")
+
+
