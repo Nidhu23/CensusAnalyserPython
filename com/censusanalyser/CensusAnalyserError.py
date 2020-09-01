@@ -1,3 +1,4 @@
+# Custom exception class
 class CensusAnalyserError(Exception):
     def __init__(self, message):
         super().__init__()

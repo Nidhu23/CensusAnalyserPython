@@ -1,3 +1,4 @@
+# File with classes to map csv headers to instance variables
 class IndiaCensusCSV:
     def __init__(self):
         self.state = "State"
